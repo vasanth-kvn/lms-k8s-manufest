@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: web-server
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: web-server
+
+  template:
+    metadata:
+      labels:
+        app: web-server
+
+    spec:
+      containers:
+        - name: web-server
+
+          image: 035523415138.dkr.ecr.us-east-1.amazonaws.com/f-lms:latest
+
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 80
